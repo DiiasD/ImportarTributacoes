@@ -11,6 +11,8 @@ namespace ImportarTributacoes
         public decimal AliqIbsUf { get; set; }
         public decimal AliqIbsMun { get; set; }
         public decimal AliqCbs { get; set; }
+        public decimal ReducIbs { get; set;}
+        public decimal ReducCbs { get; set;}
     }
 
 

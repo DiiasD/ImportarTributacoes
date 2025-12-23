@@ -28,6 +28,7 @@ try
     service.Executar();
 
     Console.WriteLine("\nImportação concluída com sucesso!");
+    Console.ReadKey();
 }
 catch (Exception ex)
 {

@@ -56,7 +56,9 @@ namespace ImportarTributacoes
                     ClassTrib = ws.Cells[row, colunas["CLASS_TRIB"]].GetValue<string>()?.Trim() ?? string.Empty,
                     AliqIbsUf = LerDecimal(ws, row, colunas["IBS_UF"]),
                     AliqIbsMun = LerDecimal(ws, row, colunas["IBS_MUN"]),
-                    AliqCbs = LerDecimal(ws, row, colunas["CBS"])
+                    AliqCbs = LerDecimal(ws, row, colunas["CBS"]),
+                    ReducIbs = LerDecimal(ws, row, colunas["RED_IBS"]),
+                    ReducCbs = LerDecimal(ws, row, colunas["RED_CBS"])
                 };
 
                 lista.Add(item);
@@ -101,6 +103,8 @@ namespace ImportarTributacoes
                         "IBS_UF" or "ALÍQ. IBS UF" or "IBS UF" or "ALÍQ IBS UF" => "IBS_UF",
                         "IBS_MUN" or "ALÍQ. IBS MUN." or "IBS MUN" or "ALÍQ IBS MUN" => "IBS_MUN",
                         "CBS" or "ALÍQ. CBS" or "ALÍQ CBS" => "CBS",
+                        "% REDUÇÃO CBS" or "REDUÇÃO CBS" => "RED_CBS",
+                        "% REDUÇÃO IBS" or "REDUÇÃO IBS" => "RED_IBS",
                         _ => header
                     };
 
@@ -148,7 +152,10 @@ namespace ImportarTributacoes
                         CLASS_TRIB = @CLASS,
                         ALIQ_IBS_UF = @ALIQ_IBS_UF,
                         ALIQ_IBS_MUN = @ALIQ_IBS_MUN,
-                        ALIQ_CBS = @ALIQ_CBS
+                        ALIQ_CBS = @ALIQ_CBS,
+                        REDUCAO_CBS = @REDUCAO_CBS,
+                        REDUCAO_IBS = @REDUCAO_IBS
+
                     WHERE 
                 """;
                 int qtde = 0;
@@ -186,6 +193,8 @@ namespace ImportarTributacoes
                     cmd.Parameters.Add("@ALIQ_IBS_UF", FbDbType.Double).Value = (double)t.AliqIbsUf;
                     cmd.Parameters.Add("@ALIQ_IBS_MUN", FbDbType.Double).Value = (double)t.AliqIbsMun;
                     cmd.Parameters.Add("@ALIQ_CBS", FbDbType.Double).Value = (double)t.AliqCbs;
+                    cmd.Parameters.Add("@REDUCAO_IBS", FbDbType.Double).Value = (double)t.ReducIbs;
+                    cmd.Parameters.Add("@REDUCAO_CBS", FbDbType.Double).Value = (double)t.ReducCbs;
 
                     rowsAfetts += cmd.ExecuteNonQuery();
 
