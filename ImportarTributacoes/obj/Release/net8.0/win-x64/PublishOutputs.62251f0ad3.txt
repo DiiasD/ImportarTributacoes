@@ -1,0 +1,3 @@
+C:\Users\Dias\source\repos\ImportarTributacoes\ImportarTributacoes\bin\Release\net8.0\win-x64\publish\ImportarTributacoes.pdb
+C:\Users\Dias\source\repos\ImportarTributacoes\ImportarTributacoes\bin\Release\net8.0\win-x64\publish\appsettings.json
+C:\Users\Dias\source\repos\ImportarTributacoes\ImportarTributacoes\bin\Release\net8.0\win-x64\publish\ImportarTributacoes.exe
